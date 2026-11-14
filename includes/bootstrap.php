@@ -9,6 +9,7 @@ define('APP_ROOT', dirname(__DIR__));
 session_set_cookie_params([
     'httponly' => true,
     'samesite' => 'Lax',
+    'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
 ]);
 session_name('hail_projects');
 if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -20,14 +21,31 @@ function e($value): string
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
+function uses_sqlite(): bool
+{
+    $flag = getenv('USE_SQLITE');
+    return $flag === '1' || strtolower((string) $flag) === 'true';
+}
+
+function sqlite_path(): string
+{
+    $path = getenv('SQLITE_PATH');
+    return $path !== false && $path !== '' ? $path : APP_ROOT . '/database/demo.sqlite';
+}
+
 function app_config(): array
 {
+    if (uses_sqlite()) {
+        return ['driver' => 'sqlite', 'path' => sqlite_path()];
+    }
     $file = APP_ROOT . '/config/config.php';
     if (!is_file($file)) {
-        return ['host' => '127.0.0.1', 'name' => 'amanah_hail', 'user' => 'root', 'pass' => ''];
+        return ['driver' => 'mysql', 'host' => '127.0.0.1', 'name' => 'amanah_hail', 'user' => 'root', 'pass' => ''];
     }
     $config = require $file;
-    return is_array($config) ? $config : [];
+    $config = is_array($config) ? $config : [];
+    $config['driver'] = 'mysql';
+    return $config;
 }
 
 function render_db_error(PDOException $e): void
@@ -58,13 +76,32 @@ function db(): PDO
         return $pdo;
     }
     $c = app_config();
-    $dsn = 'mysql:host=' . $c['host'] . ';dbname=' . $c['name'] . ';charset=utf8mb4';
     try {
-        $pdo = new PDO($dsn, $c['user'], $c['pass'], [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
+        if (($c['driver'] ?? 'mysql') === 'sqlite') {
+            $path = $c['path'];
+            $dir = dirname($path);
+            if (!is_dir($dir)) {
+                mkdir($dir, 0775, true);
+            }
+            $pdo = new PDO('sqlite:' . $path, null, null, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
+            $pdo->exec('PRAGMA foreign_keys = ON');
+            $exists = $pdo->query("SELECT name FROM sqlite_master WHERE type='table' AND name='projects'")->fetchColumn();
+            if (!$exists) {
+                $sql = file_get_contents(APP_ROOT . '/database/schema.sqlite.sql');
+                $pdo->exec($sql);
+            }
+        } else {
+            $dsn = 'mysql:host=' . $c['host'] . ';dbname=' . $c['name'] . ';charset=utf8mb4';
+            $pdo = new PDO($dsn, $c['user'], $c['pass'], [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
+        }
     } catch (PDOException $e) {
         render_db_error($e);
     }

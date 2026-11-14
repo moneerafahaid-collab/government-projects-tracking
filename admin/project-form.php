@@ -113,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $note = 'أُضيف المشروع إلى سجل المتابعة.';
         }
         if ($note !== '') {
-            db()->prepare('INSERT INTO project_updates (project_id, progress, note, created_at) VALUES (?, ?, ?, NOW())')
-                ->execute([$savedId, $progress, mb_substr($note, 0, 400)]);
+            db()->prepare('INSERT INTO project_updates (project_id, progress, note, created_at) VALUES (?, ?, ?, ?)')
+                ->execute([$savedId, $progress, mb_substr($note, 0, 400), date('Y-m-d H:i:s')]);
         }
 
         foreach ((array) ($_POST['delete_images'] ?? []) as $imageId) {
