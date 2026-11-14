@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="نظام متابعة مشاريع وكالة التحول الرقمي ووكالة الاستراتيجية ووكالة التميز المؤسسي في أمانة منطقة حائل."><title>المشاريع — متابعة مشاريع أمانة حائل</title><link rel="icon" href="assets/img/logo-mark.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css"></head><body class="is-public"><a class="skip" href="#content">تجاوز إلى المحتوى</a><header class="app-header"><a class="brand" href="index.html" aria-label="متابعة المشاريع الحكومية"><img src="assets/img/logo.png" alt="متابعة المشاريع الحكومية"></a><button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="القائمة">☰</button><nav class="main-nav" id="main-nav" aria-label="التنقل الرئيسي"><a class="is-active" href="index.html">المشاريع</a><a href="index.html">الخريطة</a><a href="structure.html">الوكالات</a><a href="alerts.html">التنبيهات <em class="badge">9</em></a></nav><a class="header-login" href="login.html">دخول</a></header><main id="content"><script>window.PROJECTS = [{"id":12,"title":"الخطة الاستراتيجية لأمانة حائل 2024-2028","lat":27.5248,"lng":41.6861,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة الاستراتيجية","location":"وسط حائل","expected":"30 سبتمبر 2024","url":"project-12.html","alert":false},{"id":3,"title":"بوابة التصاريح الإلكترونية","lat":27.5219,"lng":41.6902,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة التحول الرقمي","location":"وسط حائل","expected":"20 أكتوبر 2024","url":"project-3.html","alert":false},{"id":20,"title":"برنامج صوت المستفيد","lat":27.5084,"lng":41.6782,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة التميز المؤسسي","location":"حي السويفلة","expected":"30 أكتوبر 2024","url":"project-20.html","alert":false},{"id":19,"title":"تطبيق معيار التميز المؤسسي","lat":27.5186,"lng":41.6948,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة التميز المؤسسي","location":"وسط حائل","expected":"15 نوفمبر 2024","url":"project-19.html","alert":false},{"id":1,"title":"منصة الخدمات البلدية الموحدة","lat":27.5318,"lng":41.7064,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة التحول الرقمي","location":"حي النقرة","expected":"30 نوفمبر 2024","url":"project-1.html","alert":false},{"id":13,"title":"تقرير المؤشرات الحضرية","lat":27.5576,"lng":41.7172,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة الاستراتيجية","location":"حي السمراء","expected":"1 ديسمبر 2024","url":"project-13.html","alert":false},{"id":2,"title":"توحيد مركز البيانات البلدي","lat":27.4482,"lng":41.691,"status":"completed","statusLabel":"مكتمل","progress":100,"agency":"وكالة التحول الرقمي","location":"محيط المطار","expected":"15 ديسمبر 2024","url":"project-2.html","alert":false}];</script><section class="container map-layout" id="map">
+  <div class="map-panel">
+    <div class="panel-head">
+      <div>
+        <h2>تابع تقدّم المشاريع على الخريطة</h2>
+        <p class="muted">نسب الإنجاز والحالة والمواعيد عبر الوكالات الثلاث.</p>
+      </div>
+      <button type="button" class="btn btn-ghost" id="map-reset">إعادة ضبط الإطار</button>
+    </div>
+    <div class="map-shell" dir="ltr">
+      <div id="city-map" class="js-map map-canvas" role="region" aria-label="خريطة مشاريع حائل"></div>
+    </div>
+    <ul class="legend">
+      <li><i class="status-completed"></i> مكتمل</li>
+      <li><i class="status-in_progress"></i> قيد التنفيذ</li>
+      <li><i class="status-needs_followup"></i> يحتاج متابعة</li>
+      <li><i class="status-delayed"></i> متأخر</li>
+      <li><i class="status-on_hold"></i> متوقف</li>
+      <li><i class="status-planned"></i> مخطط</li>
+    </ul>
+    <noscript><p>القائمة أدناه تعرض المشاريع ومواقعها عند تعطيل JavaScript.</p></noscript>
+  </div>
+  <aside class="alert-panel">
+    <div class="panel-head">
+      <h2>تنبيهات هذا العرض</h2>
+      <a href="alerts.html?year=2024">كل التنبيهات</a>
+    </div>
+          <p class="empty">لا توجد مشاريع بحاجة إلى متابعة ضمن هذا العرض.</p>
+      </aside>
+</section>
+
+<section class="container hail-numbers" aria-label="ملخص">
+  <div class="kpis">
+  <article class="kpi"><span>المشاريع المعروضة</span><strong>7</strong><small>7 مشاريع</small></article>
+  <article class="kpi"><span>متوسط الإنجاز</span><strong>100٪</strong><small>على السجلات الظاهرة</small></article>
+  <article class="kpi kpi-alert"><span>تحتاج متابعة</span><strong>0</strong><small>تنبيه موعد أو حالة أو وتيرة</small></article>
+  <article class="kpi"><span>مكتملة</span><strong>7</strong><small>أُغلق سجلها</small></article>
+  </div>
+</section>
+
+<section class="container list-block" id="list">
+  <form class="filters" method="get" action="index.html">
+    <div class="years" role="tablist" aria-label="سنة الإعلان">
+      <a class="" href="index.html">الكل <small>26</small></a>
+              <a class="is-on" href="year-2024.html">2024 <small>7</small></a>
+              <a class="" href="year-2025.html">2025 <small>11</small></a>
+              <a class="" href="year-2026.html">2026 <small>8</small></a>
+          </div>
+    <label class="field"><span>بحث</span><input type="search" name="q" value="" placeholder="اسم المشروع أو الحي أو الإدارة"></label>
+    <label class="field"><span>الوكالة</span>
+      <select name="agency">
+        <option value="">كل الوكالات</option>
+                  <option value="1">وكالة التحول الرقمي</option>
+                  <option value="2">وكالة الاستراتيجية</option>
+                  <option value="3">وكالة التميز المؤسسي</option>
+              </select>
+    </label>
+    <label class="field"><span>الحالة</span>
+      <select name="status">
+        <option value="">كل الحالات</option>
+                  <option value="planned">مخطط</option>
+                  <option value="in_progress">قيد التنفيذ</option>
+                  <option value="needs_followup">يحتاج متابعة</option>
+                  <option value="delayed">متأخر</option>
+                  <option value="on_hold">متوقف</option>
+                  <option value="completed">مكتمل</option>
+              </select>
+    </label>
+    <label class="field"><span>الترتيب</span>
+      <select name="sort">
+        <option value="">الأحدث إعلانًا</option>
+        <option value="due">الأقرب استحقاقًا</option>
+        <option value="progress">الأقل إنجازًا</option>
+        <option value="alert">التنبيهات أولًا</option>
+      </select>
+    </label>
+              <input type="hidden" name="year" value="2024">
+        <button class="btn btn-primary" type="submit">تطبيق</button>
+    <a class="btn btn-ghost" href="index.html">مسح</a>
+  </form>
+
+  
+              <section class="agency-block" id="agency-1" style="--agency: #163445">
+      <header class="agency-head">
+        <div>
+          <p class="kicker">وكالة</p>
+          <h2>وكالة التحول الرقمي</h2>
+          <p>تتولى رقمنة خدمات الأمانة، والبنية التقنية، والبيانات، وحماية الأنظمة.</p>
+        </div>
+        <p class="agency-stat"><strong>100٪</strong><span>متوسط هذا العرض · 3 مشاريع</span></p>
+      </header>
+      <div class="chips">
+                  <a class="chip" href="year-2024.html">إدارة التطبيقات والمنصات</a>
+                  <a class="chip" href="year-2024.html">إدارة البنية التحتية الرقمية</a>
+              </div>
+      <div class="cards">
+                  <article class="card" id="project-3" style="--agency: #163445">
+            <a class="card-media" href="project-3.html">
+              <img src="assets/img/projects/p03.jpg" alt="بوابة التصاريح الإلكترونية">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة التطبيقات والمنصات · 2024</p>
+              <h3><a href="project-3.html">بوابة التصاريح الإلكترونية</a></h3>
+              <p class="summary">تقديم تصاريح الحفر والفعاليات إلكترونيًا مع مسار اعتماد ظاهر.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>وسط حائل</span>
+                <span>أُنجز في 20 أكتوبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="3">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-1" style="--agency: #163445">
+            <a class="card-media" href="project-1.html">
+              <img src="assets/img/projects/p01.jpg" alt="منصة الخدمات البلدية الموحدة">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة التطبيقات والمنصات · 2024</p>
+              <h3><a href="project-1.html">منصة الخدمات البلدية الموحدة</a></h3>
+              <p class="summary">بوابة واحدة لخدمات المستفيد من الرخص والاستعلامات والبلاغات.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>حي النقرة</span>
+                <span>أُنجز في 30 نوفمبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="1">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-2" style="--agency: #163445">
+            <a class="card-media" href="project-2.html">
+              <img src="assets/img/projects/p02.jpg" alt="توحيد مركز البيانات البلدي">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة البنية التحتية الرقمية · 2024</p>
+              <h3><a href="project-2.html">توحيد مركز البيانات البلدي</a></h3>
+              <p class="summary">نقل أنظمة الأمانة إلى مركز بيانات واحد بمعايير نسخ احتياطي واضحة.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>محيط المطار</span>
+                <span>أُنجز في 15 ديسمبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="2">أظهر على الخريطة</button>
+            </div>
+          </article>
+              </div>
+    </section>
+              <section class="agency-block" id="agency-2" style="--agency: #C4843C">
+      <header class="agency-head">
+        <div>
+          <p class="kicker">وكالة</p>
+          <h2>وكالة الاستراتيجية</h2>
+          <p>تتولى التخطيط والأداء والدراسات والشراكات التي توجّه أعمال الأمانة.</p>
+        </div>
+        <p class="agency-stat"><strong>100٪</strong><span>متوسط هذا العرض · مشروعان</span></p>
+      </header>
+      <div class="chips">
+                  <a class="chip" href="year-2024.html">إدارة التخطيط الاستراتيجي</a>
+                  <a class="chip" href="year-2024.html">إدارة الدراسات ودعم القرار</a>
+              </div>
+      <div class="cards">
+                  <article class="card" id="project-12" style="--agency: #C4843C">
+            <a class="card-media" href="project-12.html">
+              <img src="assets/img/projects/p12.jpg" alt="الخطة الاستراتيجية لأمانة حائل 2024-2028">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة التخطيط الاستراتيجي · 2024</p>
+              <h3><a href="project-12.html">الخطة الاستراتيجية لأمانة حائل 2024-2028</a></h3>
+              <p class="summary">وثيقة الاتجاه والأهداف ومؤشرات الوكالات حتى عام 2028.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>وسط حائل</span>
+                <span>أُنجز في 30 سبتمبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="12">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-13" style="--agency: #C4843C">
+            <a class="card-media" href="project-13.html">
+              <img src="assets/img/projects/p13.jpg" alt="تقرير المؤشرات الحضرية">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة الدراسات ودعم القرار · 2024</p>
+              <h3><a href="project-13.html">تقرير المؤشرات الحضرية</a></h3>
+              <p class="summary">خط أساس لخدمات المدينة وجودة الأحياء قبل توسيع المتابعة.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>حي السمراء</span>
+                <span>أُنجز في 1 ديسمبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="13">أظهر على الخريطة</button>
+            </div>
+          </article>
+              </div>
+    </section>
+              <section class="agency-block" id="agency-3" style="--agency: #0B1F2A">
+      <header class="agency-head">
+        <div>
+          <p class="kicker">وكالة</p>
+          <h2>وكالة التميز المؤسسي</h2>
+          <p>تتولى الجودة وتجربة المستفيد وتطوير الإجراءات والابتكار.</p>
+        </div>
+        <p class="agency-stat"><strong>100٪</strong><span>متوسط هذا العرض · مشروعان</span></p>
+      </header>
+      <div class="chips">
+                  <a class="chip" href="year-2024.html">إدارة تجربة المستفيد</a>
+                  <a class="chip" href="year-2024.html">إدارة الجودة والتميز</a>
+              </div>
+      <div class="cards">
+                  <article class="card" id="project-20" style="--agency: #0B1F2A">
+            <a class="card-media" href="project-20.html">
+              <img src="assets/img/projects/p20.jpg" alt="برنامج صوت المستفيد">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة تجربة المستفيد · 2024</p>
+              <h3><a href="project-20.html">برنامج صوت المستفيد</a></h3>
+              <p class="summary">قنوات ملاحظات موحدة وربطها بتحسين الخدمات الأكثر تذمرًا.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>حي السويفلة</span>
+                <span>أُنجز في 30 أكتوبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="20">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-19" style="--agency: #0B1F2A">
+            <a class="card-media" href="project-19.html">
+              <img src="assets/img/projects/p19.jpg" alt="تطبيق معيار التميز المؤسسي">
+              <span class="status-pill status-completed">مكتمل</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة الجودة والتميز · 2024</p>
+              <h3><a href="project-19.html">تطبيق معيار التميز المؤسسي</a></h3>
+              <p class="summary">مواءمة أعمال الأمانة مع معيار التميز وإغلاق فجوات التقييم.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div>              <div class="card-foot">
+                <span>100٪</span>
+                <span>وسط حائل</span>
+                <span>أُنجز في 15 نوفمبر 2024</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="19">أظهر على الخريطة</button>
+            </div>
+          </article>
+              </div>
+    </section>
+  </section>
+</main><footer class="app-footer"><div class="container footer-row"><p>متابعة المشاريع · التحول الرقمي · الاستراتيجية · التميز المؤسسي</p><p>السجل يشمل المشاريع المعلنة في 2024 و2025 و2026</p></div></footer><script src="assets/vendor/leaflet/leaflet.js"></script><script src="assets/js/app.js"></script></body></html>

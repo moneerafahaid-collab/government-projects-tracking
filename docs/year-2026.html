@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="نظام متابعة مشاريع وكالة التحول الرقمي ووكالة الاستراتيجية ووكالة التميز المؤسسي في أمانة منطقة حائل."><title>المشاريع — متابعة مشاريع أمانة حائل</title><link rel="icon" href="assets/img/logo-mark.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css"></head><body class="is-public"><a class="skip" href="#content">تجاوز إلى المحتوى</a><header class="app-header"><a class="brand" href="index.html" aria-label="متابعة المشاريع الحكومية"><img src="assets/img/logo.png" alt="متابعة المشاريع الحكومية"></a><button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="القائمة">☰</button><nav class="main-nav" id="main-nav" aria-label="التنقل الرئيسي"><a class="is-active" href="index.html">المشاريع</a><a href="index.html">الخريطة</a><a href="structure.html">الوكالات</a><a href="alerts.html">التنبيهات <em class="badge">9</em></a></nav><a class="header-login" href="login.html">دخول</a></header><main id="content"><script>window.PROJECTS = [{"id":10,"title":"أتمتة مسار الرخص التجارية","lat":27.5014,"lng":41.7296,"status":"in_progress","statusLabel":"قيد التنفيذ","progress":27,"agency":"وكالة التحول الرقمي","location":"حي الشفا","expected":"15 ديسمبر 2026","url":"project-10.html","alert":true},{"id":24,"title":"جائزة التميز الداخلي","lat":27.4832,"lng":41.6854,"status":"in_progress","statusLabel":"قيد التنفيذ","progress":32,"agency":"وكالة التميز المؤسسي","location":"حي عقدة","expected":"20 ديسمبر 2026","url":"project-24.html","alert":true},{"id":25,"title":"إعادة هندسة رحلة الرخص","lat":27.4962,"lng":41.7368,"status":"in_progress","statusLabel":"قيد التنفيذ","progress":45,"agency":"وكالة التميز المؤسسي","location":"حي الشفا","expected":"31 مارس 2027","url":"project-25.html","alert":false},{"id":18,"title":"إطار قياس أثر المشاريع الرأسمالية","lat":27.5272,"lng":41.6994,"status":"planned","statusLabel":"مخطط","progress":14,"agency":"وكالة الاستراتيجية","location":"حي النقرة","expected":"30 أبريل 2027","url":"project-18.html","alert":false},{"id":26,"title":"مختبر تحسين الإجراءات","lat":27.5342,"lng":41.7136,"status":"in_progress","statusLabel":"قيد التنفيذ","progress":20,"agency":"وكالة التميز المؤسسي","location":"حي برزان","expected":"30 يونيو 2027","url":"project-26.html","alert":false},{"id":11,"title":"المساعد المعرفي لخدمة المستفيد","lat":27.5294,"lng":41.7212,"status":"planned","statusLabel":"مخطط","progress":8,"agency":"وكالة التحول الرقمي","location":"حي برزان","expected":"1 أغسطس 2027","url":"project-11.html","alert":false},{"id":17,"title":"تحديث الخارطة الاستثمارية","lat":27.5504,"lng":41.6628,"status":"in_progress","statusLabel":"قيد التنفيذ","progress":28,"agency":"وكالة الاستراتيجية","location":"حي لبدة","expected":"30 سبتمبر 2027","url":"project-17.html","alert":false},{"id":9,"title":"التوأم الرقمي لمدينة حائل","lat":27.4794,"lng":41.7468,"status":"in_progress","statusLabel":"قيد التنفيذ","progress":36,"agency":"وكالة التحول الرقمي","location":"سفح أجا","expected":"31 ديسمبر 2027","url":"project-9.html","alert":false}];</script><section class="container map-layout" id="map">
+  <div class="map-panel">
+    <div class="panel-head">
+      <div>
+        <h2>تابع تقدّم المشاريع على الخريطة</h2>
+        <p class="muted">نسب الإنجاز والحالة والمواعيد عبر الوكالات الثلاث.</p>
+      </div>
+      <button type="button" class="btn btn-ghost" id="map-reset">إعادة ضبط الإطار</button>
+    </div>
+    <div class="map-shell" dir="ltr">
+      <div id="city-map" class="js-map map-canvas" role="region" aria-label="خريطة مشاريع حائل"></div>
+    </div>
+    <ul class="legend">
+      <li><i class="status-completed"></i> مكتمل</li>
+      <li><i class="status-in_progress"></i> قيد التنفيذ</li>
+      <li><i class="status-needs_followup"></i> يحتاج متابعة</li>
+      <li><i class="status-delayed"></i> متأخر</li>
+      <li><i class="status-on_hold"></i> متوقف</li>
+      <li><i class="status-planned"></i> مخطط</li>
+    </ul>
+    <noscript><p>القائمة أدناه تعرض المشاريع ومواقعها عند تعطيل JavaScript.</p></noscript>
+  </div>
+  <aside class="alert-panel">
+    <div class="panel-head">
+      <h2>تنبيهات هذا العرض</h2>
+      <a href="alerts.html?year=2026">كل التنبيهات</a>
+    </div>
+          <ul class="alert-mini">
+                  <li>
+            <a href="project-10.html">أتمتة مسار الرخص التجارية</a>
+            <span>وكالة التحول الرقمي · نسبة الإنجاز أقل من الزمن المنقضي بفارق ملحوظ</span>
+          </li>
+                  <li>
+            <a href="project-24.html">جائزة التميز الداخلي</a>
+            <span>وكالة التميز المؤسسي · نسبة الإنجاز أقل من الزمن المنقضي بفارق ملحوظ</span>
+          </li>
+              </ul>
+      </aside>
+</section>
+
+<section class="container hail-numbers" aria-label="ملخص">
+  <div class="kpis">
+  <article class="kpi"><span>المشاريع المعروضة</span><strong>8</strong><small>8 مشاريع</small></article>
+  <article class="kpi"><span>متوسط الإنجاز</span><strong>26٪</strong><small>على السجلات الظاهرة</small></article>
+  <article class="kpi kpi-alert"><span>تحتاج متابعة</span><strong>2</strong><small>تنبيه موعد أو حالة أو وتيرة</small></article>
+  <article class="kpi"><span>مكتملة</span><strong>0</strong><small>أُغلق سجلها</small></article>
+  </div>
+</section>
+
+<section class="container list-block" id="list">
+  <form class="filters" method="get" action="index.html">
+    <div class="years" role="tablist" aria-label="سنة الإعلان">
+      <a class="" href="index.html">الكل <small>26</small></a>
+              <a class="" href="year-2024.html">2024 <small>7</small></a>
+              <a class="" href="year-2025.html">2025 <small>11</small></a>
+              <a class="is-on" href="year-2026.html">2026 <small>8</small></a>
+          </div>
+    <label class="field"><span>بحث</span><input type="search" name="q" value="" placeholder="اسم المشروع أو الحي أو الإدارة"></label>
+    <label class="field"><span>الوكالة</span>
+      <select name="agency">
+        <option value="">كل الوكالات</option>
+                  <option value="1">وكالة التحول الرقمي</option>
+                  <option value="2">وكالة الاستراتيجية</option>
+                  <option value="3">وكالة التميز المؤسسي</option>
+              </select>
+    </label>
+    <label class="field"><span>الحالة</span>
+      <select name="status">
+        <option value="">كل الحالات</option>
+                  <option value="planned">مخطط</option>
+                  <option value="in_progress">قيد التنفيذ</option>
+                  <option value="needs_followup">يحتاج متابعة</option>
+                  <option value="delayed">متأخر</option>
+                  <option value="on_hold">متوقف</option>
+                  <option value="completed">مكتمل</option>
+              </select>
+    </label>
+    <label class="field"><span>الترتيب</span>
+      <select name="sort">
+        <option value="">الأحدث إعلانًا</option>
+        <option value="due">الأقرب استحقاقًا</option>
+        <option value="progress">الأقل إنجازًا</option>
+        <option value="alert">التنبيهات أولًا</option>
+      </select>
+    </label>
+              <input type="hidden" name="year" value="2026">
+        <button class="btn btn-primary" type="submit">تطبيق</button>
+    <a class="btn btn-ghost" href="index.html">مسح</a>
+  </form>
+
+  
+              <section class="agency-block" id="agency-1" style="--agency: #163445">
+      <header class="agency-head">
+        <div>
+          <p class="kicker">وكالة</p>
+          <h2>وكالة التحول الرقمي</h2>
+          <p>تتولى رقمنة خدمات الأمانة، والبنية التقنية، والبيانات، وحماية الأنظمة.</p>
+        </div>
+        <p class="agency-stat"><strong>24٪</strong><span>متوسط هذا العرض · 3 مشاريع</span></p>
+      </header>
+      <div class="chips">
+                  <a class="chip" href="year-2026.html">إدارة التطبيقات والمنصات</a>
+                  <a class="chip" href="year-2026.html">إدارة البيانات والتحليل</a>
+              </div>
+      <div class="cards">
+                  <article class="card has-alert" id="project-10" style="--agency: #163445">
+            <a class="card-media" href="project-10.html">
+              <img src="assets/img/projects/p10.jpg" alt="أتمتة مسار الرخص التجارية">
+              <span class="status-pill status-in_progress">قيد التنفيذ</span>              <em class="flag">تنبيه</em>            </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة التطبيقات والمنصات · 2026</p>
+              <h3><a href="project-10.html">أتمتة مسار الرخص التجارية</a></h3>
+              <p class="summary">اختصار رحلة الرخصة بربط الاشتراطات والسداد والإصدار.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="27"><span style="width:27%"></span></div>              <div class="card-foot">
+                <span>27٪</span>
+                <span>حي الشفا</span>
+                <span>متبقٍ 31 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="10">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-11" style="--agency: #163445">
+            <a class="card-media" href="project-11.html">
+              <img src="assets/img/projects/p11.jpg" alt="المساعد المعرفي لخدمة المستفيد">
+              <span class="status-pill status-planned">مخطط</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة البيانات والتحليل · 2026</p>
+              <h3><a href="project-11.html">المساعد المعرفي لخدمة المستفيد</a></h3>
+              <p class="summary">إجابات مبنية على أدلة الخدمات المعتمدة لتقليل الاتصالات المتكررة.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8"><span style="width:8%"></span></div>              <div class="card-foot">
+                <span>8٪</span>
+                <span>حي برزان</span>
+                <span>متبقٍ 259 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="11">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-9" style="--agency: #163445">
+            <a class="card-media" href="project-9.html">
+              <img src="assets/img/projects/p09.jpg" alt="التوأم الرقمي لمدينة حائل">
+              <span class="status-pill status-in_progress">قيد التنفيذ</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة البيانات والتحليل · 2026</p>
+              <h3><a href="project-9.html">التوأم الرقمي لمدينة حائل</a></h3>
+              <p class="summary">نموذج مكاني للمدينة يربط الأصول والمشاريع بشواهد ميدانية.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="36"><span style="width:36%"></span></div>              <div class="card-foot">
+                <span>36٪</span>
+                <span>سفح أجا</span>
+                <span>متبقٍ 412 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="9">أظهر على الخريطة</button>
+            </div>
+          </article>
+              </div>
+    </section>
+              <section class="agency-block" id="agency-2" style="--agency: #C4843C">
+      <header class="agency-head">
+        <div>
+          <p class="kicker">وكالة</p>
+          <h2>وكالة الاستراتيجية</h2>
+          <p>تتولى التخطيط والأداء والدراسات والشراكات التي توجّه أعمال الأمانة.</p>
+        </div>
+        <p class="agency-stat"><strong>21٪</strong><span>متوسط هذا العرض · مشروعان</span></p>
+      </header>
+      <div class="chips">
+                  <a class="chip" href="year-2026.html">إدارة الأداء والمتابعة</a>
+                  <a class="chip" href="year-2026.html">إدارة الشراكات والاستثمار</a>
+              </div>
+      <div class="cards">
+                  <article class="card" id="project-18" style="--agency: #C4843C">
+            <a class="card-media" href="project-18.html">
+              <img src="assets/img/projects/p18.jpg" alt="إطار قياس أثر المشاريع الرأسمالية">
+              <span class="status-pill status-planned">مخطط</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة الأداء والمتابعة · 2026</p>
+              <h3><a href="project-18.html">إطار قياس أثر المشاريع الرأسمالية</a></h3>
+              <p class="summary">منهج يربط صرف المشروع بالأثر على المؤشر لا بنسبة الإنجاز وحدها.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="14"><span style="width:14%"></span></div>              <div class="card-foot">
+                <span>14٪</span>
+                <span>حي النقرة</span>
+                <span>متبقٍ 166 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="18">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-17" style="--agency: #C4843C">
+            <a class="card-media" href="project-17.html">
+              <img src="assets/img/projects/p17.jpg" alt="تحديث الخارطة الاستثمارية">
+              <span class="status-pill status-in_progress">قيد التنفيذ</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة الشراكات والاستثمار · 2026</p>
+              <h3><a href="project-17.html">تحديث الخارطة الاستثمارية</a></h3>
+              <p class="summary">حصر المواقع القابلة للاستثمار البلدي وتحديث اشتراطاتها.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="28"><span style="width:28%"></span></div>              <div class="card-foot">
+                <span>28٪</span>
+                <span>حي لبدة</span>
+                <span>متبقٍ 319 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="17">أظهر على الخريطة</button>
+            </div>
+          </article>
+              </div>
+    </section>
+              <section class="agency-block" id="agency-3" style="--agency: #0B1F2A">
+      <header class="agency-head">
+        <div>
+          <p class="kicker">وكالة</p>
+          <h2>وكالة التميز المؤسسي</h2>
+          <p>تتولى الجودة وتجربة المستفيد وتطوير الإجراءات والابتكار.</p>
+        </div>
+        <p class="agency-stat"><strong>32٪</strong><span>متوسط هذا العرض · 3 مشاريع</span></p>
+      </header>
+      <div class="chips">
+                  <a class="chip" href="year-2026.html">إدارة الجودة والتميز</a>
+                  <a class="chip" href="year-2026.html">إدارة التطوير المؤسسي</a>
+                  <a class="chip" href="year-2026.html">إدارة الابتكار والتحسين</a>
+              </div>
+      <div class="cards">
+                  <article class="card has-alert" id="project-24" style="--agency: #0B1F2A">
+            <a class="card-media" href="project-24.html">
+              <img src="assets/img/projects/p24.jpg" alt="جائزة التميز الداخلي">
+              <span class="status-pill status-in_progress">قيد التنفيذ</span>              <em class="flag">تنبيه</em>            </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة الجودة والتميز · 2026</p>
+              <h3><a href="project-24.html">جائزة التميز الداخلي</a></h3>
+              <p class="summary">جائزة سنوية لفرق الوكالات وفق أثر موثق.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="32"><span style="width:32%"></span></div>              <div class="card-foot">
+                <span>32٪</span>
+                <span>حي عقدة</span>
+                <span>متبقٍ 36 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="24">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-25" style="--agency: #0B1F2A">
+            <a class="card-media" href="project-25.html">
+              <img src="assets/img/projects/p25.jpg" alt="إعادة هندسة رحلة الرخص">
+              <span class="status-pill status-in_progress">قيد التنفيذ</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة التطوير المؤسسي · 2026</p>
+              <h3><a href="project-25.html">إعادة هندسة رحلة الرخص</a></h3>
+              <p class="summary">تبسيط خطوات الرخصة كما يراها المستفيد بالتنسيق مع الأتمتة.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45"><span style="width:45%"></span></div>              <div class="card-foot">
+                <span>45٪</span>
+                <span>حي الشفا</span>
+                <span>متبقٍ 136 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="25">أظهر على الخريطة</button>
+            </div>
+          </article>
+                  <article class="card" id="project-26" style="--agency: #0B1F2A">
+            <a class="card-media" href="project-26.html">
+              <img src="assets/img/projects/p26.jpg" alt="مختبر تحسين الإجراءات">
+              <span class="status-pill status-in_progress">قيد التنفيذ</span>                          </a>
+            <div class="card-body">
+              <p class="card-meta">إدارة الابتكار والتحسين · 2026</p>
+              <h3><a href="project-26.html">مختبر تحسين الإجراءات</a></h3>
+              <p class="summary">تجارب قصيرة على إجراءات داخلية قبل تعميمها.</p>
+              <div class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20"><span style="width:20%"></span></div>              <div class="card-foot">
+                <span>20٪</span>
+                <span>حي برزان</span>
+                <span>متبقٍ 227 يومًا</span>
+              </div>
+              <button class="pin-jump" type="button" data-focus="26">أظهر على الخريطة</button>
+            </div>
+          </article>
+              </div>
+    </section>
+  </section>
+</main><footer class="app-footer"><div class="container footer-row"><p>متابعة المشاريع · التحول الرقمي · الاستراتيجية · التميز المؤسسي</p><p>السجل يشمل المشاريع المعلنة في 2024 و2025 و2026</p></div></footer><script src="assets/vendor/leaflet/leaflet.js"></script><script src="assets/js/app.js"></script></body></html>
